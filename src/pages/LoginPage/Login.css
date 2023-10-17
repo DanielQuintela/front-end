@@ -1,0 +1,193 @@
+body {
+  /* background-image:  url("https://data.1freewallpapers.com/download/gradient-green-texture-background.jpg"); */
+  /* background-image: url("https://wallpaper.dog/large/10717699.jpg"); */
+  /* background-repeat: no-repeat; */
+  /* background-image: url("https://wallpapercave.com/wp/wp2939867.png"); */
+  background-color: rgb(202, 202, 202);
+  
+}
+
+.login-container {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+}
+
+.side-bar {
+border: 2px solid #58AF9B;
+padding: 80px;
+width: 400px; /* Largura da barra lateral */
+background-color: #58AF9B; /* Cor de fundo */
+height: 490px; /* Altura total da barra lateral */
+position: relative; /* Posição fixa */
+box-shadow: 0px 4px 5px rgba(44, 2, 2, 0.6);
+border-radius: 25px;
+color: #fff;
+}
+.side-bar p {
+  text-align: center;
+}
+.side-bar button{
+  margin: 0 auto 14px auto;
+  justify-content: center;
+  display: block;
+}
+.campo-button{
+  margin-top: 50px;
+  margin-bottom: 145px;
+  justify-content: center;
+  display: block;
+}
+
+.input-button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 1px solid rgb(255, 255, 255);
+  background-color: transparent;
+  color: #fff;
+  font-size: 15px;
+  padding: 13px 50px;
+  border-radius: 12px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: transform .2s ease-in-out;
+  font-size: 15px;
+  transition: background-color .5s;
+
+}
+
+.input-button:hover {
+  background-color: #d1fcf2;
+  color: black;
+  border: 1px solid black;
+  /* transform: scale(1.05); */
+  transition: background-color .5s;
+}
+
+.input-button:active {
+  transform: scale(0.95);
+  background-color: transparent;
+  color: black;
+
+}
+.login-logo {
+  margin-bottom: 10px; 
+  margin-top: 40px;
+  /* margin-right: 20px; /* Espaçamento entre a logo e a caixa de login  */
+
+}
+
+
+.login-logo img {
+  width: auto; /* Largura da logo */
+  height: 70px; /* Altura da logo */
+  left: 35px; /* Posição horizontal da logo */
+  top: 0; /* Posição vertical da logo */
+  cursor: pointer;
+}
+
+.login-box {
+  border: 1px solid #ccc;
+  padding: 80px;
+  width: 400px; 
+  height: 490px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 0 25px 25px 0;
+  box-shadow: 5px 4px 5px rgba(44, 2, 2, 0.6);
+  margin: -16px;
+
+
+}
+
+.login-box h2 {
+  margin: -8px;
+  margin-bottom: 5px;
+  /* font-size: 30px; */
+  color: #4ab4b1;
+
+}
+
+.campo-input {
+  margin-top: 110px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.login-box input {
+  width: 400px;
+  padding: 11px;
+  margin-bottom: 14px;
+  border: 2px solid #ccc;
+  margin: 0 auto 14px auto;
+  border-radius: 12px;
+  display: block;
+}
+
+.login-box button {
+  background-color: #4ab4b1;
+  color: #fff;
+  border: none;
+  padding: 15px 23px;
+  border-radius: 12px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: transform .2s ease-in-out;
+  font-size: 15px;
+  transition: background-color .5s;
+  margin-top: 5px;
+}
+
+.login-box button:hover {
+  background-color: #d1fcf2;
+  color: #4ab4b1;
+  /* transform: scale(1.05); */
+  transition: background-color .5s;
+  border: 1px solid #4ab4b1;
+
+}
+
+.login-box button:active {
+  transform: scale(0.95);
+  background-color: #4ab4b1;
+  color: #fff;
+  transition: border .5s;
+}
+
+
+.input-text:focus {
+  border: 2px solid #4ab4b1;
+  outline: none;
+  transition: border .5s;
+}
+
+.input-text::placeholder {
+  color: #a5a2a2;
+}
+
+.input-text:focus::placeholder {
+  color: #4ab4b1;
+  transition: placeholder .5s;
+}
+
+.input-text:hover {
+  border: 2px solid #4ab4b1;
+  transition: border .5s;
+
+}
+
+.input-text:hover::placeholder {
+  color: #4ab4b1;
+  transition: placeholder .5s;
+}
+
+.input-text:active {
+  border: 2px solid #052927;
+  transition: border .5s;
+}
+
+.input-text:active::placeholder {
+  color: #052927;
+  transition: .5s;
+}
