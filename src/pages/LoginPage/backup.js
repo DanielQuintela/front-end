@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Login.css";
-import logo from "./logobus.png";
+import logo from "../../assets/logo/logo com fundo.png";
 
 export default function Login() {
   const [formData, setFormData] = useState({

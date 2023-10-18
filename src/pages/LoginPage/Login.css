@@ -12,6 +12,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 height: 100vh;
+background-color: rgb(202, 202, 202);
 }
 
 .side-bar {
@@ -191,3 +192,4 @@ color: #fff;
   color: #052927;
   transition: .5s;
 }
+

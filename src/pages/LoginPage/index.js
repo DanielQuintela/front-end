@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Login.css";
-import logo from "./logo com fundo.png";
+import logo from "../../assets/logo/logo com fundo.png";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
@@ -60,7 +60,7 @@ export default function Login() {
           <p>
             Abaixo para criar uma conta de veterinário
           </p>
-          <button className="input-button">Resgistrar Veterinário</button>
+          <button className="input-button" onClick={() => navigate("/cadastro/veterinario")}>Resgistrar Veterinário</button>
         </div>
         <div className="side-bar-footer">
           {/* <h3>BuscaVet</h3> */}
