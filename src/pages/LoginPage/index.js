@@ -42,6 +42,7 @@ export default function Login() {
       // alert("Erro ao logar2");
     }
   };
+  
 
   return (
     <div className="login-container">
@@ -55,7 +56,7 @@ export default function Login() {
         <p>
             Aperte abaixo para criar uma conta de usuário
           </p>
-          <button className="input-button">Criar Conta Usuário </button>
+          <button className="input-button" onClick={() => navigate("/cadastro/usuario" )}>Criar Conta Usuário </button>
           <p>
             Abaixo para criar uma conta de veterinário
           </p>
