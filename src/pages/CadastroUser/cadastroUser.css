@@ -31,3 +31,92 @@
     margin: -16px;
   
 }
+
+.form-user-content h1 {
+    margin-bottom: 20px;
+    color: #58AF9B;
+}
+
+.form-user-content p {
+    margin-bottom: 20px;
+    color: #58AF9B;
+}
+
+.form-user-content input {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    outline: none;
+}
+
+.form-user-content button {
+    background-color: #4ab4b1;
+    color: #fff;
+    border: 1px solid #4ab4b1;
+    padding: 15px 23px;
+    border-radius: 12px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: transform .2s ease-in-out;
+    font-size: 15px;
+    transition: background-color .5s;
+    margin-top: 5px;
+}
+
+.form-user-content button:hover {
+    background-color: #d1fcf2;
+    color: #4ab4b1;
+    transition: background-color .5s;
+    border: 1px solid #4ab4b1;
+}
+
+.form-user-content button:active {
+    transform: scale(0.95);
+    background-color: #4ab4b1;
+    color: #fff;
+    transition: border .5s;
+}
+
+.form-user-content button:focus {
+    border: 1px solid #4ab4b1;
+    outline: none;
+    transition: border .5s;
+}
+
+.form-user {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-user input {
+    width: 400px;
+    padding: 11px;
+    margin-bottom: 14px;
+    border: 2px solid #ccc;
+    margin: 0 auto 14px auto;
+    border-radius: 12px;
+    display: block;
+}
+
+.form-user input.confirm-password {
+    width: 400px;
+    padding: 11px;
+    margin-bottom: 14px;
+    border: 2px solid #ccc;
+    margin: 0 auto 14px auto;
+    border-radius: 12px;
+    display: block;
+    opacity: 0; /* Inicialmente, defina a opacidade para 0 */
+    height: 0; /* Inicialmente, defina a altura para 0 */
+    overflow: hidden;
+    transition: opacity 0.5s ease, height 0.5s ease; /* Adicione uma transição suave */
+  }
+  
+  .form-user input.confirm-password.active {
+    opacity: 1; /* Quando a classe 'active' é adicionada, torna o campo visível */
+    height: auto; /* Restaura a altura automática para exibir o campo */
+  }

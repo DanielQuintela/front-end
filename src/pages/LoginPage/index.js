@@ -1,13 +1,23 @@
-import React, { useState } from "react";
+import React, { useRef, useState, useContext, useEffect } from "react";
 import "./Login.css";
 import logo from "../../assets/logo/logo com fundo.png";
 import { useNavigate } from "react-router-dom";
+import AuthContext from "../../context/AuthProvider.js";
+
+import axios from "../../api/axios.js";
+const LOGIN_URL = "/usuarios/login";
 
 export default function Login() {
+  const { setAuth } = useContext(AuthContext);
+
+  const errRef = useRef();
+
   const [formData, setFormData] = useState({
     email: "",
     senha: "",
   });
+
+  const [errMsg, setErrMsg] = useState(""); // [1 - 1] - Criar estado para mensagem de erro
 
   const handleFormEdit = (event, name) => {
     setFormData({
@@ -16,30 +26,49 @@ export default function Login() {
     });
   };
 
+  useEffect(() => {
+    setErrMsg('');
+}, [formData.email, formData.senha]);
+
+
   const navigate = useNavigate();
 
   const handleLogin = async (event) => {
     try {
       event.preventDefault();
-      const response = await fetch("http://localhost:4000/usuarios/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json", 
-        },
-        body: JSON.stringify(formData),
-      });
-      
+      const response = await axios.post(LOGIN_URL, 
+        JSON.stringify(formData),
+        {
+          headers: {
+            "Content-Type": "application/json"},
+          // withCredentials: true,
+        }
+      );
+      // console.log(JSON.stringify(response?.data));
+      console.log(response)
       if (response.status === 200) {
-        const data = await response.json();
-        console.log(data);
-        // alert("Logado com sucesso\n" + JSON.stringify(data, null, 2));
-        navigate("/home");
+        const acessToken = response?.data?.token;
+        // const role = response?.data?.role;
+        setAuth({ email: formData.email, senha: formData.senha, acessToken });
+        setFormData({ email: "", senha: "" });
+        alert("Logado com sucesso\n" + JSON.stringify(response?.data));
+        // navigate("/home");
       } else {
         alert("Erro ao logar");
       }
-    } catch (error) {
-      console.error("Erro ao logar:", error);
-      // alert("Erro ao logar2");
+    } catch (err) {
+      if (!err?.response) {
+          setErrMsg('Sem resposta do servidor');
+      } else if (err.response?.status === 400) {
+          setErrMsg('Email e senha são obrigatórios');
+      } else if (err.response?.status === 404) {
+          setErrMsg('Usuário não encontrado');
+      } else if (err.response?.status === 401) {
+          setErrMsg('Senha Incorreta');
+      } else {
+          setErrMsg('Login Failed');
+      }
+      errRef.current.focus();
     }
   };
   
@@ -69,6 +98,7 @@ export default function Login() {
       </div>
 
       <div className="login-box">
+      <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
 
         <div className="login-logo">
           <img src={logo} className="App-logo" alt="logo" />
