@@ -68,7 +68,7 @@ export default function Login() {
       } else {
           setErrMsg('Login Failed');
       }
-      errRef.current.focus();
+
     }
   };
   
@@ -98,11 +98,13 @@ export default function Login() {
       </div>
 
       <div className="login-box">
-      <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+        <div className="notification" >
+       
+        </div>
 
         <div className="login-logo">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Faça seu login aqui</h2>
+          <h2 ref={errRef} className={!errMsg ? "offscreen" : "errmsg"} aria-live="assertive">{errMsg ? errMsg : "Faça seu login aqui"}</h2>
         </div>
 
         <div className="campo-input">

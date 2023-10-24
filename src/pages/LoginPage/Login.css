@@ -102,13 +102,18 @@ color: #fff;
 
 }
 
-.login-box h2 {
-  margin: -8px;
+.login-box h2.offscreen {
+  margin: 12px;
   margin-bottom: 5px;
-  /* font-size: 30px; */
-  color: #4ab4b1;
-
+  color: #4ab4b1; /* Cor padrão */
 }
+
+.login-box h2.errmsg {
+  margin: 12px;
+  margin-bottom: 5px;
+  color: red; /* Cor vermelha */
+}
+
 
 .campo-input {
   margin-top: 110px;

@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: rgb(202, 202, 202);
+    background-color: rgb(139, 202, 204);
 }
 
 .side-user-content {
@@ -14,7 +14,7 @@
     background-color: #58AF9B; /* Cor de fundo */
     height: 490px; /* Altura total da barra lateral */
     position: relative; /* Posição fixa */
-    box-shadow: 0px 4px 5px rgba(44, 2, 2, 0.6);
+    box-shadow: 0px 4px 5px rgba(44, 2, 2, 0.2);
     border-radius: 25px;
     color: #fff;
 }
@@ -27,7 +27,7 @@
     text-align: center;
     background-color: #fff;
     border-radius: 0 25px 25px 0;
-    box-shadow: 5px 4px 5px rgba(44, 2, 2, 0.6);
+    box-shadow: 0px 4px 5px rgba(44, 2, 2, 0.2);
     margin: -16px;
   
 }
@@ -100,23 +100,65 @@
     margin: 0 auto 14px auto;
     border-radius: 12px;
     display: block;
+    transition: opacity 0.5s ease, height 0.5s ease; /* Adicione uma transição suave */
 }
 
-.form-user input.confirm-password {
-    width: 400px;
-    padding: 11px;
-    margin-bottom: 14px;
-    border: 2px solid #ccc;
-    margin: 0 auto 14px auto;
-    border-radius: 12px;
-    display: block;
+.form-user input.offscreen_input-text {
     opacity: 0; /* Inicialmente, defina a opacidade para 0 */
-    height: 0; /* Inicialmente, defina a altura para 0 */
     overflow: hidden;
     transition: opacity 0.5s ease, height 0.5s ease; /* Adicione uma transição suave */
   }
   
-  .form-user input.confirm-password.active {
-    opacity: 1; /* Quando a classe 'active' é adicionada, torna o campo visível */
-    height: auto; /* Restaura a altura automática para exibir o campo */
+ .form-user-content p.error-message {
+    color: #ff0000; /* Cor vermelha para o texto de erro */
+    font-size: 14px; /* Tamanho da fonte */
+    margin-top: 5px; /* Espaçamento superior para separá-lo dos campos de entrada */
   }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(36, 68, 55, 0.5);
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    position: relative;
+    align-items: center;
+  }
+
+  .modal-content input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+}
+
+.form-user input[type="date"] {
+    color: #a5a2a2; /* define a cor do texto */
+}
+  
+  
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Cor de fundo escura com transparência */
+    z-index: 0; /* Coloque-o em cima de outros elementos, exceto o modal */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
