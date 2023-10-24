@@ -11,10 +11,17 @@ export default function CadastroUser() {
         nome: "",
         email: "",
         cpf: "",
+        senha: "",
         dataNascimento: "",
+        cep: "",
+        estado: "",
+        cidade: "",
+        endereco: "",
+        telefone: "",
       });
     
-    const [password, setPassword] = useState("");
+    const [cepBusca, setCepBusca] = useState("");
+
     const [confirmPassword, setConfirmPassword] = useState("");
 
     const [passwordsMatch, setPasswordsMatch] = useState(true); // Estado para verificar se as senhas coincidem
@@ -22,7 +29,8 @@ export default function CadastroUser() {
 
     const handlePasswordChange = (e) => {
         const newPassword = e.target.value;
-        setPassword(newPassword);
+        // setFormData(newPassword);
+        handleFormEdit(e, "senha")
         setShowConfirmPassword(!!newPassword); // Use !! para converter em um boolean
     };
 
@@ -35,30 +43,25 @@ export default function CadastroUser() {
 
     useEffect(() => {
         // Verifique se as senhas coincidem sempre que uma delas for alterada
-        if (password && confirmPassword) {
-            setPasswordsMatch(password === confirmPassword);
+        if (formData.senha && confirmPassword) {
+            setPasswordsMatch(formData.senha === confirmPassword);
           } else {
             setPasswordsMatch(true); // Se uma das senhas estiver vazia, considere-as como coincidentes
           }
-        }, [password, confirmPassword]);
+        }, [formData.senha, confirmPassword]);
 
     const handleCadastro = async (event) => {
         try {
             event.preventDefault();
-            const data = {
-                nome: formData.nome,
-                email: formData.email,
-                cpf: formData.cpf,
-                senha: password, 
-            };
-            console.log(data)
+            
+            console.log(formData)
             if(!passwordsMatch) {
                 alert("As senhas não coincidem")
                 return
             }
             const response = await axios.post("/usuarios",
 
-            JSON.stringify(data),
+            JSON.stringify(formData),
             {
                 headers: {
                     "Content-Type": "application/json"},
@@ -90,6 +93,35 @@ export default function CadastroUser() {
     }
     };
     
+    const handleBuscarCep = async (event) => {
+        // setCepBusca(event.target.value)
+        try {
+            const data = {
+                cep: cepBusca,
+            }
+            event.preventDefault();
+            console.log(cepBusca)
+            const response = await axios.post('services/getcep',
+            
+            JSON.stringify(data),
+            {
+                headers: {
+                    "Content-Type": "application/json"},
+                    // withCredentials: true,
+            });
+
+            console.log(response.data)
+            setFormData({
+                ...formData,
+                estado: response.data.uf,
+                cidade: response.data.localidade,
+                endereco: response.data.logradouro,
+            })
+            console.log(data)
+        } catch (err) {
+            alert("Erro ao buscar CEP"+err)
+        }
+    }
 
     return (
         <div className="cadastro-usuario-container">
@@ -160,10 +192,10 @@ export default function CadastroUser() {
                                             handleFormEdit(e, "dataNascimento");
                                         }}
                                     />
-                                    <input className="input-text" type="text" placeholder="CEP"  />
-                                    <input className="input-text" type="text" placeholder="Estado" />
-                                    <input className="input-text" type="text" placeholder="Cidade" />
-                                    <input className="input-text" type="text" placeholder="Endereço" />
+                                    <input className="input-text" type="text" placeholder="CEP" onChange={(e) => {setCepBusca(e.target.value)}} onBlur={handleBuscarCep}   />
+                                    <input className="input-text" type="text" placeholder="Estado" value={formData.estado} />
+                                    <input className="input-text" type="text" placeholder="Cidade"  value={formData.cidade} />
+                                    <input className="input-text" type="text" placeholder="Endereço" value={formData.endereco}/>
                                 
 
                                     <button 
@@ -179,8 +211,11 @@ export default function CadastroUser() {
                     <button 
                         className="input-text" 
                         type="button" 
-                        onClick={handleCadastro && handleProximaEtapaClick}>
+                        onClick={handleCadastro}>
                         Criar Conta
+                    </button>
+                    <button onClick={handleProximaEtapaClick}>
+                        modal
                     </button>
 
                 </div>
