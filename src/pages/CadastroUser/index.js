@@ -1,11 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./cadastroUser.css";
-
+import Modal from "../modal/informacoesAdicionais.js"
 import axios from "../../api/axios.js";
+import { useNavigate } from "react-router-dom";
 
 export default function CadastroUser() {
     const passwordRef = useRef();
     const confirmPasswordRef = useRef();
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         nome: "",
@@ -20,7 +22,6 @@ export default function CadastroUser() {
         telefone: "",
       });
     
-    const [cepBusca, setCepBusca] = useState("");
 
     const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -69,6 +70,7 @@ export default function CadastroUser() {
             }
             );
             console.log(response)
+            setModalVisible(true);
 
         } catch (err) {
             alert("Erro ao cadastrar"+err)
@@ -93,41 +95,21 @@ export default function CadastroUser() {
     }
     };
     
-    const handleBuscarCep = async (event) => {
-        // setCepBusca(event.target.value)
-        try {
-            const data = {
-                cep: cepBusca,
-            }
-            event.preventDefault();
-            console.log(cepBusca)
-            const response = await axios.post('services/getcep',
-            
-            JSON.stringify(data),
-            {
-                headers: {
-                    "Content-Type": "application/json"},
-                    // withCredentials: true,
-            });
-
-            console.log(response.data)
-            setFormData({
-                ...formData,
-                estado: response.data.uf,
-                cidade: response.data.localidade,
-                endereco: response.data.logradouro,
-            })
-            console.log(data)
-        } catch (err) {
-            alert("Erro ao buscar CEP"+err)
-        }
-    }
-
+   
     return (
         <div className="cadastro-usuario-container">
             <div className="side-user-content">
-                <h1>Olá, seja bem vindo</h1>
+                <div className="side-header">
+                    <button className="voltar"
+                        onClick={() => navigate(-1)}
+                    >
+                    &larr;
+                    
+                    </button>
+                    <h1>Olá, seja bem vindo</h1>
+                </div>
                 <p>Se você já tiver cadastro <br /> Em nosso site, clique em "Login"</p>
+               
             </div>
 
             <div className="form-user-content">
@@ -173,40 +155,18 @@ export default function CadastroUser() {
                         <p className="error-message">As senhas não coincidem.</p>
                     )}
                     
-                    {/* <div className="modal-overlay" onClick={handleFecharModalFora} style={{ display: modalVisible ? "block" : "none" }}> */}
-                        <div
-                            id="meuModal"
-                            className="modal"
-                            style={{ display: modalVisible ? "block" : "none" }}
-                            >
-                            <div className="modal-overlay" onClick={handleFecharModalFora} style={{ display: modalVisible ? "block" : "none" }}>
-                                <div className="modal-content">
-                                    {/* Adicione aqui os campos adicionais do formulário */}
-                                    <input type="text" placeholder="Telefone" />
-                                    <input
-                                        className="input-text"
-                                        type="date"
-                                        placeholder="Data de Nascimento"
-                                        value={formData.dataNascimento}
-                                        onChange={(e) => {
-                                            handleFormEdit(e, "dataNascimento");
-                                        }}
-                                    />
-                                    <input className="input-text" type="text" placeholder="CEP" onChange={(e) => {setCepBusca(e.target.value)}} onBlur={handleBuscarCep}   />
-                                    <input className="input-text" type="text" placeholder="Estado" value={formData.estado} />
-                                    <input className="input-text" type="text" placeholder="Cidade"  value={formData.cidade} />
-                                    <input className="input-text" type="text" placeholder="Endereço" value={formData.endereco}/>
-                                
-
-                                    <button 
-                                        className="input-button" 
-                                        onClick={handleFecharModal}>
-                                        Fechar
-                                    </button>
-                                </div>
-                        </div>
-                    </div>
-
+                    <Modal
+                        isOpen={modalVisible}
+                        onClose={handleFecharModal }
+                        onCloseOut={handleFecharModalFora}
+                        formData={formData}
+                        editor={handleFormEdit}
+                        setFormData={setFormData}
+                        onSave={() => {
+                        // Lógica para salvar os dados do modal
+                        }}
+                        // Outros campos passados como propriedades para o modal
+                    />
 
                     <button 
                         className="input-text" 
@@ -217,7 +177,7 @@ export default function CadastroUser() {
                     <button onClick={handleProximaEtapaClick}>
                         modal
                     </button>
-
+                   
                 </div>
             </div>
         </div>

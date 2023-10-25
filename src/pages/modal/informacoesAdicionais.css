@@ -1,0 +1,94 @@
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(36, 68, 55, 0.5);
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    max-width: 450px;
+    margin: 100px auto;
+    padding: 30px;
+    border-radius: 28px;
+    border: 1px solid #ccc;
+    position: relative;
+    align-items: center;
+  }
+
+  .modal-content input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 340px;
+    font-size: 15px;
+}
+
+.form-user input[type="date"] {
+    color: #a5a2a2; /* define a cor do texto */
+    font-size: 17px;
+}
+
+.form-user input[type="date"]:hover{
+    color: #58AF9B;
+}
+  
+  
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Cor de fundo escura com transparência */
+    z-index: 0; /* Coloque-o em cima de outros elementos, exceto o modal */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.modal-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-header h3{
+    color: #58AF9B;
+}
+
+.modal-content button.modal-close{
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    cursor: pointer;
+    width: 20px;
+    height: 39px;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    align-items: center;
+    border-radius: 20px;
+
+}
+
+.modal-content button.input-button{
+  margin-top: 15px;
+  margin-bottom: -6px;
+}
+
+.modal-content button.finish-button{
+  margin-top: 15px;
+  margin-bottom: -6px;
+}
+  
+input:disabled {
+  background-color: #f2f2f2; /* Defina um plano de fundo diferente */
+  color: #999; /* Altere a cor do texto */
+  cursor: not-allowed; /* Altere o cursor para "não permitido" */
+  border: 1px solid #ccc; /* Altere a borda */
+}

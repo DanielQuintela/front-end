@@ -112,6 +112,10 @@ color: #fff;
   margin: 12px;
   margin-bottom: 5px;
   color: red; /* Cor vermelha */
+  padding: 10px 0 10px 0;
+  border: 1px solid black;
+  border-radius: 12px;
+  background-color: #56918e;
 }
 
 
