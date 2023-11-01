@@ -3,9 +3,39 @@ import { useState } from "react";
 import "./informacoesAdicionais.css";
 import axios from "../../api/axios";
 
-export default function Modal  ({ isOpen, onClose, onCloseOut, editor, onSave, formData, setFormData })  {
+export default function Modal  ({ isOpen, onClose, onCloseOut, editor, onSave, formData, setFormData})  {
 
     const [cepBusca, setCepBusca] = useState("");
+
+    const sendData = async (event) => {
+        try {
+            event.preventDefault();
+            const data = {
+                dataNascimento: formData.dataNascimento,
+                cep: formData.cep,
+                estado: formData.estado,
+                cidade: formData.cidade,
+                endereco: formData.endereco,
+                telefone: formData.telefone,
+                numero: formData.numero,
+                complemento: formData.complemento,
+            }
+            console.log(data)
+            const response = await axios.post('services/cadastro',
+            
+            JSON.stringify(data),
+            {
+                headers: {
+                    "Content-Type": "application/json"},
+                    // withCredentials: true,
+            });
+
+            console.log(response.data)
+            onClose()
+        } catch (err) {
+            alert("Erro ao cadastrar"+err)
+        }
+    }
 
     const handleBuscarCep = async (event) => {
         // setCepBusca(event.target.value)
@@ -31,6 +61,7 @@ export default function Modal  ({ isOpen, onClose, onCloseOut, editor, onSave, f
                 estado: response.data.uf,
                 cidade: response.data.localidade,
                 endereco: response.data.logradouro,
+                complemento: response.data.bairro,
             })
             console.log(data)
         } catch (err) {
@@ -71,7 +102,7 @@ export default function Modal  ({ isOpen, onClose, onCloseOut, editor, onSave, f
                 value={formData.estado} 
                 onChange={(e) => {editor(e,"estado")}}
                 disabled = {formData.cep === "" ? true : false}
-
+                required
                 />
             <input className="input-text" 
                 type="text" 
@@ -79,6 +110,7 @@ export default function Modal  ({ isOpen, onClose, onCloseOut, editor, onSave, f
                 value={formData.cidade}
                 onChange={(e) => {editor(e,"cidade")}}
                 disabled = {formData.cep === "" ? true : false}
+                required
                 />
             <input className="input-text" 
                 type="text" 
@@ -86,10 +118,27 @@ export default function Modal  ({ isOpen, onClose, onCloseOut, editor, onSave, f
                 value={formData.endereco}
                 onChange={(e) => {editor(e,"endereco")}}
                 disabled = {formData.cep === "" ? true : false}
+                required
                 />
+            <input className="input-text"
+                type="text"
+                placeholder="Complemento"
+                value={formData.complemento}
+                onChange={(e) => {editor(e,"complemento")}}
+                disabled = {formData.cep === "" ? true : false}
+                required
+            />  
+            <input className="input-text" 
+                type="text"
+                placeholder="Número"
+                value={formData.numero}
+                onChange={(e) => {editor(e,"numero")}}
+                required
+            />
+           
             <button 
                 className={formData.cep === "" ? "input-button" : "finish-button"}
-                onClick={onClose}>
+                onClick={formData.cep === "" ? onClose : sendData}>
                 {formData.cep === "" ? "Concluir Depois" : "Concluir Cadastro"}
             </button>
         </div>

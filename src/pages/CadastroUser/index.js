@@ -20,6 +20,8 @@ export default function CadastroUser() {
         cidade: "",
         endereco: "",
         telefone: "",
+        numero: "",
+        complemento: "",
       });
     
 

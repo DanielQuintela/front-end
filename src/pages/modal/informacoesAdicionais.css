@@ -17,6 +17,7 @@
     border: 1px solid #ccc;
     position: relative;
     align-items: center;
+    top: -70px;
   }
 
   .modal-content input{
