@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useEffect } from "react";
 import { useState } from "react";
 import "./informacoesAdicionais.css";
 import axios from "../../api/axios";
@@ -11,6 +11,7 @@ export default function Modal  ({ isOpen, onClose, onCloseOut, editor, onSave, f
         try {
             event.preventDefault();
             const data = {
+                email: formData.email,
                 dataNascimento: formData.dataNascimento,
                 cep: formData.cep,
                 estado: formData.estado,
@@ -21,7 +22,7 @@ export default function Modal  ({ isOpen, onClose, onCloseOut, editor, onSave, f
                 complemento: formData.complemento,
             }
             console.log(data)
-            const response = await axios.post('services/cadastro',
+            const response = await axios.post('/usuarios/information',
             
             JSON.stringify(data),
             {
@@ -29,7 +30,7 @@ export default function Modal  ({ isOpen, onClose, onCloseOut, editor, onSave, f
                     "Content-Type": "application/json"},
                     // withCredentials: true,
             });
-
+            
             console.log(response.data)
             onClose()
         } catch (err) {
@@ -37,37 +38,47 @@ export default function Modal  ({ isOpen, onClose, onCloseOut, editor, onSave, f
         }
     }
 
-    const handleBuscarCep = async (event) => {
-        // setCepBusca(event.target.value)
+    const handleBuscarCep = useCallback( async (event) => {
+        
         try {
-            const data = {
-                cep: cepBusca,
-            }
-            event.preventDefault();
-            console.log(cepBusca)
-            const response = await axios.post('services/getcep',
+            const cepFormatado = cepBusca.replace(/[-. ]/g, '');
+            if (/^\d{0,8}$/.test(cepFormatado)) {
+                // Se o valor contém apenas números e tem no máximo 8 dígitos
+                
+                if (cepFormatado.length > 7 && cepFormatado.length < 9) {
+                    const data = {
+                        cep: cepFormatado,
+                    }
             
-            JSON.stringify(data),
-            {
-                headers: {
-                    "Content-Type": "application/json"},
-                    // withCredentials: true,
-            });
-
-            console.log(response.data)
-            setFormData({
-                ...formData,
-                cep: response.data.cep,
-                estado: response.data.uf,
-                cidade: response.data.localidade,
-                endereco: response.data.logradouro,
-                complemento: response.data.bairro,
-            })
-            console.log(data)
+                    const response = await axios.post('services/getcep',
+                    
+                    JSON.stringify(data),
+                    {
+                        headers: {
+                            "Content-Type": "application/json"},
+                    });
+        
+                    console.log(response.data)
+                    setFormData({
+                        cep: response.data.cep,
+                        estado: response.data.uf,
+                        cidade: response.data.localidade,
+                        endereco: response.data.logradouro,
+                        complemento: response.data.bairro,
+                    });
+                }
+            }
         } catch (err) {
             alert("Erro ao buscar CEP"+err)
         }
-    }
+    }, [cepBusca, setFormData]);
+
+    useEffect(() => {
+        // Esta função será chamada sempre que cepBusca mudar
+        if (cepBusca.length > 7) {
+          handleBuscarCep();
+        }
+      }, [cepBusca, handleBuscarCep]);
 
   return (
     <div
@@ -85,7 +96,16 @@ export default function Modal  ({ isOpen, onClose, onCloseOut, editor, onSave, f
             </div>
             
             {/* Adicione aqui os campos adicionais do formulário */}
-            <input className="input-text" type="text" placeholder="Número de Telefone" />
+            <input 
+                className="input-text" 
+                type="text" 
+                placeholder="Número de Telefone" 
+                value={formData.telefone}
+                onChange={(e) => {
+                    editor(e,"telefone")
+                }}
+            />
+            
             <input
                 className="input-text"
                 type="date"
@@ -95,7 +115,7 @@ export default function Modal  ({ isOpen, onClose, onCloseOut, editor, onSave, f
                     editor(e, "dataNascimento");
                 }}
             />
-            <input className="input-text" type="text" placeholder="CEP" onChange={(e) => {setCepBusca(e.target.value)}} onBlur={handleBuscarCep}   />
+            <input className="input-text" type="text" placeholder="CEP" onChange={(e) => {setCepBusca(e.target.value)}}  />
             <input className="input-text" 
                 type="text" 
                 placeholder="Estado" 

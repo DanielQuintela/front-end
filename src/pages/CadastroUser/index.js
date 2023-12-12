@@ -176,9 +176,9 @@ export default function CadastroUser() {
                         onClick={handleCadastro}>
                         Criar Conta
                     </button>
-                    <button onClick={handleProximaEtapaClick}>
+                    {/* <button onClick={handleProximaEtapaClick}>
                         modal
-                    </button>
+                    </button> */}
                    
                 </div>
             </div>
