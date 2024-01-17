@@ -104,7 +104,9 @@ export default function Login() {
 
         <div className="login-logo">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2 ref={errRef} className={!errMsg ? "offscreen" : "errmsg"} aria-live="assertive">{errMsg ? errMsg : "Faça seu login aqui"}</h2>
+          <div className="texto-login">
+            <h2 ref={errRef} className={!errMsg ? "offscreen" : "errmsg"} aria-live="assertive">{errMsg ? errMsg : "Faça seu login abaixo"}</h2>
+          </div>
         </div>
 
         <div className="campo-input">

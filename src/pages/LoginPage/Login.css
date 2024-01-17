@@ -103,19 +103,24 @@ color: #fff;
 }
 
 .login-box h2.offscreen {
-  margin: 12px;
+  margin: 6px;
   margin-bottom: 5px;
   color: #4ab4b1; /* Cor padrão */
 }
 
-.login-box h2.errmsg {
+.texto-login h2.errmsg {
+  margin: 5px;
+  margin-bottom: 4px;
+  color: #317c7a; 
+}
+.texto-login {
   margin: 12px;
-  margin-bottom: 5px;
-  color: red; /* Cor vermelha */
-  padding: 10px 0 10px 0;
-  border: 1px solid black;
-  border-radius: 12px;
-  background-color: #56918e;
+  margin-bottom: 4px;
+  color: #266361; 
+  padding: 6px 0 10px 0;
+  border: 2px solid #58af9b81 ;
+  border-radius: 16px;
+  background-color: #bdf0efbe;
 }
 
 
