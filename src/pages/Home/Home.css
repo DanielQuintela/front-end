@@ -1,0 +1,185 @@
+.menu-suspenso-logo img {
+    width: auto; /* Largura da logo */
+    height: 70px; /* Altura da logo */
+    left: 35px; /* Posição horizontal da logo */
+    top: 0; /* Posição vertical da logo */
+    cursor: pointer;
+    position: absolute;
+    margin-top: 15px;
+    margin-left: 40px;
+}
+
+.menu-suspenso {
+    border: 1px solid #ccc;
+    /* padding: 80px; */
+    /* width: 400px;  */
+    height: 100px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 0 0px 0px 0;
+    box-shadow: 0px 5px 5px rgba(44, 2, 2, 0.4);
+    
+}
+
+.opcoes-menu {
+    position: center;
+    margin-top: 35px;
+    margin-left: 560px;
+   /* justify-content: space-between; */
+}
+
+.opcoes-menu ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 390px;  /*para alinhar a lista de opções do menu*/
+  }
+
+.opcoes-menu a {
+    color: #000;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform .2s ease-in-out;
+}
+
+.opcoes-menu a:hover {
+    color: #4ab4b1;
+    transition: color .5s;
+    /* box-shadow: 5px 4px 5px rgba(12, 85, 67, 0.418);
+    border-radius: 5px; */
+}
+.opcoes-menu a:active {
+    color: #4ab4b0b6;
+    transform: scale(0.95);
+
+}
+
+.login {
+    margin-left: 130px; /* empurra o login para longe das opcoes */
+}
+.container-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 1px;
+    height: 250px;
+    background-color: rgb(4, 180, 174);
+}
+
+.conteudo-menu {
+    margin-left: 20px;
+    
+}
+
+
+.container-menu h3 {
+    margin-top: 1px;
+    color: #fff;
+}
+
+.container-menu h4 {
+    margin-top: -6px; /* Adicione um valor de margem conforme necessário */
+    color: #ffffffda;
+}
+
+.container-menu-busca{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin-top:-5px;
+    height: 80px;
+    background-color: rgb(4, 180, 174);
+    width: 560px;
+}
+
+.container-menu-busca select {
+    border-radius: 12px;
+    width: 155px;
+    height: 35px;
+    
+}
+
+.select-city-home{
+    border: #fff;
+    text-align: center;
+}
+.select-city-home:hover {
+    border: 1px solid #000000;
+    transition: border .5s;
+}
+.select-city-home:focus {
+    border: 1px solid #000000;
+    outline: none;
+    transition: border .5s;
+}
+
+.container-menu-busca input {
+    border-radius: 12px;
+    width: 280px;
+    height: 30px;
+    border: #fff;
+    
+}
+
+.container-menu-busca button {
+    border-radius: 10px;
+    width: 85px;
+    height: 33px;
+    border: 1px solid #b9ac37;
+    background-color: #eedd41;
+    color: #266361;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform .2s ease-in-out;
+}
+
+.container-menu-busca button:hover {
+    border: 1px solid black;
+    background-color: #f8f1b3;
+    transition: color .5s;
+   
+}
+.container-menu-busca button:active {
+    color: #266361;
+    transform: scale(0.95);
+
+}
+
+.input-text-home {
+    border: 1px solid rgb(255, 255, 255);
+    font-size: 15px;
+    padding: 3px 10px;
+}
+
+.input-text-home:focus {
+    border: 1px solid #000000;
+    outline: none;
+    transition: border .5s;
+}
+
+.input-text-home::placeholder {
+    color: #a5a2a2;
+}
+
+.input-text-home:focus::placeholder {
+    color: #4ab4b1;
+    transition: placeholder .5s;
+}
+
+.input-text-home:hover {
+    border: 1px solid #000000;
+    transition: border .5s;
+}
+
+.input-text-home:hover::placeholder {
+    color: #4ab4b1;
+    transition: placeholder .5s;
+}
+

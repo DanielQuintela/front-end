@@ -103,11 +103,12 @@ export default function Login() {
         </div>
 
         <div className="login-logo">
-          <img src={logo} className="App-logo" alt="logo" />
-          <div className="texto-login">
-            <h2 ref={errRef} className={!errMsg ? "offscreen" : "errmsg"} aria-live="assertive">{errMsg ? errMsg : "Faça seu login abaixo"}</h2>
-          </div>
+          <img src={logo} className="App-logo" alt="logo" onClick={() => navigate("/home")}/>
         </div>
+        <div className="texto-login">
+          <h2 ref={errRef} className={!errMsg ? "offscreen" : "errmsg"} aria-live="assertive">{errMsg ? errMsg : "Faça seu login abaixo"}</h2>
+        </div>
+        
 
         <div className="campo-input">
           <input
