@@ -1,6 +1,8 @@
 import React from "react";
 import "./Home.css";
 import logo from "../../assets/logo/logo com fundo.png";
+import CadastroUser from "../CadastroUser";
+import Login from "../LoginPage";
 // import { useNavigate } from "react-router-dom";
 // import "./menu.css";
 
@@ -57,6 +59,8 @@ function App() {
       </div>
     </div>
   </div>
+
+  {/* <Login /> */}
  
   </body>
   );
