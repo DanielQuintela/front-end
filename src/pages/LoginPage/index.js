@@ -89,7 +89,7 @@ export default function Login() {
           <p>
             Abaixo para criar uma conta de veterinário
           </p>
-          <button className="input-button" onClick={() => navigate("/cadastro/veterinario")}>Resgistrar Veterinário</button>
+          <button className="input-button" onClick={() => navigate("/cadastro/veterinario")}>Registrar Veterinário</button>
         </div>
         <div className="side-bar-footer">
           {/* <h3>BuscaVet</h3> */}

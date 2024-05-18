@@ -78,6 +78,7 @@ export default function CadastroUser() {
             alert("Erro ao cadastrar"+err)
         }
     }
+    // TODO: Apagar quando terminar de testar o modal
 
     const handleProximaEtapaClick = () => {
         const modal = document.getElementById("meuModal");
@@ -176,6 +177,8 @@ export default function CadastroUser() {
                         onClick={handleCadastro}>
                         Criar Conta
                     </button>
+                    {/*TODO: Apenas para teste do modal */}
+
                     {/* <button onClick={handleProximaEtapaClick}>
                         modal
                     </button> */}
