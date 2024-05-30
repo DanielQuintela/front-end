@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Home.css";
 import logo from "../../assets/logo/logo com fundo.png";
 import CadastroUser from "../CadastroUser";
 import Login from "../LoginPage";
+import Modal from "../modal/informacoesAdicionais";
 // import { useNavigate } from "react-router-dom";
 // import "./menu.css";
 
@@ -10,6 +11,23 @@ import Login from "../LoginPage";
 function App() {
   // const navigate = useNavigate();
   const cidades = ['Aracaju', 'Maceió', 'Outra Cidade'];
+
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const handleLogin = () => {
+    const loginModal = document.getElementById("login")
+    // Modal.style.display = "block";
+    setModalVisible(true);
+  }
+  const handleFecharModalFora = (e) => {
+    if (e.target.classList.contains("login-content")) {
+        setModalVisible(false);
+    }
+    };
+   
+  const handleFecharModal = () => {
+    setModalVisible(false);
+  }
   
   return (
   <body>
@@ -30,7 +48,7 @@ function App() {
 
               <a href="/cadastro/veterinario">É Veterinário?</a>
 
-              <a className="login" href="/login">Login</a>
+              <a className="login" onClick={handleLogin}>Login</a>
           </ul>
         </div>
       </div>
@@ -60,7 +78,12 @@ function App() {
     </div>
   </div>
 
-  {/* <Login /> */}
+  <Login 
+    isOpen={modalVisible}
+    onCloseOut={handleFecharModalFora}
+    onClose={handleFecharModal}
+    
+  />
  
   </body>
   );

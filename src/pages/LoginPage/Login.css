@@ -206,3 +206,43 @@ color: #fff;
   transition: .5s;
 }
 
+/* MODAL */
+
+.login-content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-close{
+  position: absolute;
+  top: 20px;
+  left: 35px;
+  cursor: pointer;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  align-items: center;
+  border-radius: 20px;
+  background-color: #4ab4b1;
+  border-color: #266361;
+  transition: transform .2s ease-in-out;
+  transition: background-color .5s;
+  color: #052927;
+  
+}
+
+.login-close:hover {
+  background-color: #d1fcf2;
+  color: #4ab4b1;
+  transition: background-color .5s;
+  border-color:  #4ab4b1;
+}
+
+.login-close:active{
+  transform: scale(0.95);
+  transition: border .5s;
+}

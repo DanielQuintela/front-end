@@ -5,18 +5,46 @@
     align-items: center;
     height: 100vh;
     background-color: rgb(139, 202, 204);
+    background-image: url('../../assets/wallpapers/fundo.gif');
 }
 
 .side-user-content {
+    display: flex;
+    flex-direction: column; /* Empilhar os itens verticalmente */
+ 
+    align-items: center; /* Centralizar horizontalmente */
     border: 2px solid #58AF9B;
-    padding: 80px;
-    width: 500px; /* Largura da barra lateral */
+    /* padding: 80px; */
+    width: 680px; /* Largura da barra lateral */
     background-color: #58AF9B; /* Cor de fundo */
-    height: 490px; /* Altura total da barra lateral */
+    height: 650px; /* Altura total da barra lateral */
     position: relative; /* Posição fixa */
     box-shadow: 0px 4px 5px rgba(44, 2, 2, 0.2);
     border-radius: 25px;
     color: #fff;
+}
+
+.side-user-left {
+    margin-top: 75px;
+    height: auto;
+    width: auto;
+}
+
+.side-user-content h1 {
+    /* margin-bottom: 90px; Espaçamento entre o título e o parágrafo */
+    color: #fff; /* Cor do título */
+    font-size: 28px; /* Tamanho do título */
+    text-align: center; /* Centralizar texto */
+    align-self: flex-start; /* Colocar o título no topo */
+}
+
+.side-user-content p {
+    margin-top: 200px;
+    font-size: 20px;
+    text-align: center;
+    display: inline-block;
+    font-weight: 550px;
+    justify-content: center; /* Centralizar verticalmente */
 }
 
 .form-user-content {
@@ -40,6 +68,8 @@
 .form-user-content p {
     margin-bottom: 20px;
     color: #58AF9B;
+    font-size: 17px;
+    font-weight: 458px;
 }
 
 .form-user-content input {
@@ -125,8 +155,8 @@
   button.voltar{
     background-color: #4ab4b1;
     color: #fff;
-    border: 1px solid #2f6664;
-    padding: 15px 23px;
+    border-color:#2f6664;
+    padding: 13px 21px;
     border-radius: 20px;
     cursor: pointer;
     text-transform: uppercase;
@@ -142,13 +172,11 @@
         background-color: #d1fcf2;
         color: #4ab4b1;
         transition: background-color .5s;
-        border: 1px solid #4ab4b1;
+        border-color: #4ab4b1;
     }
 
     button.voltar:active {
         transform: scale(0.95);
-        background-color: #2f6664;
-        color: #fff;
         transition: border .5s;
     }
 

@@ -7,7 +7,7 @@ import AuthContext from "../../context/AuthProvider.js";
 import axios from "../../api/axios.js";
 const LOGIN_URL = "/usuarios/login";
 
-export default function Login() {
+export default function Login({isOpen, onClose, onCloseOut}) {
   const { setAuth } = useContext(AuthContext);
 
   const errRef = useRef();
@@ -71,69 +71,78 @@ export default function Login() {
 
     }
   };
-  
 
   return (
-    <div className="login-container">
-      
-      <div className="side-bar">
-        <div className="side-bar-content">
-          <h1>Seja Bem Vindo !</h1>
-          <h2>Caso não possua um cadastro no nosso site</h2>
-        </div>
-        <div className="campo-button">
-        <p>
-            Aperte abaixo para criar uma conta de usuário
-          </p>
-          <button className="input-button" onClick={() => navigate("/cadastro/usuario" )}>Criar Conta Usuário </button>
-          <p>
-            Abaixo para criar uma conta de veterinário
-          </p>
-          <button className="input-button" onClick={() => navigate("/cadastro/veterinario")}>Registrar Veterinário</button>
-        </div>
-        <div className="side-bar-footer">
-          {/* <h3>BuscaVet</h3> */}
-          <p>© 2023 BuscaVet. Todos os direitos reservados.</p>
+    <div 
+    className="login-container" 
+    id="login"
+    // style={{display: isOpen ? "block" : "none" }}
+    >
+      <div className="modal-overlay" onClick={onCloseOut} style={{ display: isOpen ? "block" : "none" }}>
+        <div className="login-content">
+          <div className="side-bar">
+            <div className="side-bar-content">
+            <button className="login-close" onClick={onClose}>
+                    &times;
+                </button>
+              <h1>Seja Bem Vindo !</h1>
+              <h2>Caso não possua um cadastro no nosso site</h2>
+            </div>
+            <div className="campo-button">
+            <p>
+                Aperte abaixo para criar uma conta de usuário
+              </p>
+              <button className="input-button" onClick={() => navigate("/cadastro/usuario" )}>Criar Conta Usuário </button>
+              <p>
+                Abaixo para criar uma conta de veterinário
+              </p>
+              <button className="input-button" onClick={() => navigate("/cadastro/veterinario")}>Registrar Veterinário</button>
+            </div>
+            <div className="side-bar-footer">
+              {/* <h3>BuscaVet</h3> */}
+              <p>© 2023 BuscaVet. Todos os direitos reservados.</p>
+            </div>
+          </div>
+
+          <div className="login-box">
+            <div className="notification" >
+          
+            </div>
+
+            <div className="login-logo">
+              <img src={logo} className="App-logo" alt="logo" onClick={() => navigate("/home")}/>
+            </div>
+            <div className="texto-login">
+              <h2 ref={errRef} className={!errMsg ? "offscreen" : "errmsg"} aria-live="assertive">{errMsg ? errMsg : "Faça seu login abaixo"}</h2>
+            </div>
+            
+
+            <div className="campo-input">
+              <input
+                className="input-text"
+                type="text"
+                placeholder="Email"
+                required
+                value={formData.email}
+                onChange={(e) => {
+                  handleFormEdit(e, "email");
+                }}
+              />
+              <input
+                className="input-text"
+                type="password"
+                placeholder="Senha"
+                required
+                value={formData.senha}
+                onChange={(e) => {
+                  handleFormEdit(e, "senha");
+                }}
+              />
+              <button className="input-button" onClick={handleLogin}>Entrar</button>
+              </div>
+          </div>
         </div>
       </div>
-
-      <div className="login-box">
-        <div className="notification" >
-       
-        </div>
-
-        <div className="login-logo">
-          <img src={logo} className="App-logo" alt="logo" onClick={() => navigate("/home")}/>
-        </div>
-        <div className="texto-login">
-          <h2 ref={errRef} className={!errMsg ? "offscreen" : "errmsg"} aria-live="assertive">{errMsg ? errMsg : "Faça seu login abaixo"}</h2>
-        </div>
-        
-
-        <div className="campo-input">
-          <input
-            className="input-text"
-            type="text"
-            placeholder="Email"
-            required
-            value={formData.email}
-            onChange={(e) => {
-              handleFormEdit(e, "email");
-            }}
-          />
-          <input
-            className="input-text"
-            type="password"
-            placeholder="Senha"
-            required
-            value={formData.senha}
-            onChange={(e) => {
-              handleFormEdit(e, "senha");
-            }}
-          />
-          <button className="input-button" onClick={handleLogin}>Entrar</button>
-        </div>
-      </div>
-    </div>
+    </div> 
   );
 }

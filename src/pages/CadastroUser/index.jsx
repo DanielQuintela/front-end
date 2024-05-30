@@ -102,7 +102,8 @@ export default function CadastroUser() {
     return (
         <div className="cadastro-usuario-container">
             <div className="side-user-content">
-                <div className="side-header">
+                <div className="side-user-left">
+                    <div className="side-header">
                     <button className="voltar"
                         onClick={() => navigate(-1)}
                     >
@@ -110,11 +111,12 @@ export default function CadastroUser() {
                     
                     </button>
                     <h1>Olá, seja bem vindo</h1>
+                    </div>
+                    <p>Se você já tiver cadastro <br /> Em nosso site, clique em "Login"</p>
+        
+                    </div>
                 </div>
-                <p>Se você já tiver cadastro <br /> Em nosso site, clique em "Login"</p>
-               
-            </div>
-
+                
             <div className="form-user-content">
                 <h1>Vamos a criação de Conta</h1>
                 <p>Para se cadastrar, pode entrar com suas redes sociais ou preencha os campos abaixo:</p>
@@ -181,8 +183,8 @@ export default function CadastroUser() {
 
                     {/* <button onClick={handleProximaEtapaClick}>
                         modal
-                    </button> */}
-                   
+                    </button>
+                    */}
                 </div>
             </div>
         </div>

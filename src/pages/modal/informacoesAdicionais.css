@@ -22,7 +22,7 @@
 
   .modal-content input{
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     width: 340px;
     font-size: 15px;
